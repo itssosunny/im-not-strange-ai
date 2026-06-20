@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="assets/social-preview.png" alt="im-not-strange-ai — 한국어 문장 다듬기 플러그인" width="820">
-</p>
-
 # im-not-strange-ai — 한국어 문장 다듬기 플러그인 v2.0
 
 `im-not-strange-ai`는 `im-not-ai`에서 영감을 받아 만든 한국어 문장 다듬기 플러그인입니다. AI(ChatGPT · Claude · Gemini 등)가 쓴 한글 글을 **내용은 보존한 채** 문체 · 리듬 · 표현만 자연스러운 한국어로 다듬습니다.
