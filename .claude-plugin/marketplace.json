@@ -1,0 +1,20 @@
+{
+  "name": "im-not-strange-ai",
+  "owner": {
+    "name": "itssosunny"
+  },
+  "metadata": {
+    "description": "im-not-ai를 기반으로 Sunny식 문장 다듬기 규칙을 일부 더한 한국어 윤문 플러그인",
+    "version": "0.1.0",
+    "pluginRoot": "."
+  },
+  "plugins": [
+    {
+      "name": "im-not-strange-ai",
+      "source": "./",
+      "description": "AI가 쓴 한글 텍스트를 자연스럽게 다듬는 오케스트레이터 스킬 + Sunny식 문장 보조 규칙.",
+      "version": "0.1.0",
+      "keywords": ["korean", "writing", "sentence-polish", "sunny", "윤문"]
+    }
+  ]
+}
