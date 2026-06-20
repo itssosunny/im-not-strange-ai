@@ -1,5 +1,9 @@
 # im-not-strange-ai — 한국어 문장 다듬기 플러그인 v2.0
 
+<p align="center">
+  <img src="assets/social-preview.png" alt="im-not-strange-ai — 한국어 문장 다듬기 플러그인" width="820">
+</p>
+
 `im-not-strange-ai`는 `im-not-ai`에서 영감을 받아 만든 한국어 문장 다듬기 플러그인입니다. AI(ChatGPT · Claude · Gemini 등)가 쓴 한글 글을 **내용은 보존한 채** 문체 · 리듬 · 표현만 자연스러운 한국어로 다듬습니다.
 
 번역투, 과도한 영어 인용, 기계적 병렬 ("첫째 · 둘째 · 셋째"), "결론적으로 / 시사하는 바가 크다" 같은 AI 특유 관용구, 피동태 남용, 문두 접속사 남발, 이모지·불릿 남용 등 **10대 카테고리 × 40+ 서브 패턴**을 심각도(S1/S2/S3)로 분류해 스팬 단위로 탐지한 뒤, 윤문합니다.

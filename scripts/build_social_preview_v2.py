@@ -1,7 +1,7 @@
-"""Build assets/social-preview.png for v2.0 — 한국 번역학계 8유형 흡수.
+"""Build assets/social-preview.png for im-not-strange-ai v2.0.
 
-기존 v1.1 디자인 톤(베이지 #F4EFE5 · 짙은 녹색 #2D5C3F · 빨강 #C0573F · BEFORE/AFTER
-2단 분할)을 유지하되, 메시지를 v2.0 신규 패턴(영-한 번역학계 흔적) 3건으로 교체.
+기존 preview 디자인 톤(베이지 #F4EFE5 · 짙은 녹색 #2D5C3F · 빨강 #C0573F · BEFORE/AFTER
+2단 분할)을 유지하되, 메시지를 Sunny 7규칙 중심으로 교체.
 1280×640 PNG 출력. Pretendard ExtraBold/Bold/SemiBold/Medium/Regular 사용.
 """
 
@@ -79,14 +79,14 @@ def build():
     d = ImageDraw.Draw(img)
 
     # Header — 좌상단 제목 + 우상단 부제 2줄
-    f_title = font(F_BLACK, 80)
+    f_title = font(F_BLACK, 64)
     f_sub = font(F_MED, 22)
     f_sub_em = font(F_SEMI, 22)
 
-    draw_text(d, (72, 70), "im-not-ai", f_title, TITLE)
-    # 우상단 — 한글 AI 티 제거기
-    sub_line1 = "한글 AI 티 제거기"
-    sub_line2 = "v2.0 · 한국 번역학계 8유형 흡수"
+    draw_text(d, (72, 70), "im-not-strange-ai", f_title, TITLE)
+    # 우상단 — 현재 플러그인 메시지
+    sub_line1 = "한국어 문장 다듬기"
+    sub_line2 = "v2.0 · Sunny 7규칙"
     draw_text(d, (W - 72, 80), sub_line1, f_sub, SUB, anchor="ra")
     draw_text(d, (W - 72, 112), sub_line2, f_sub_em, AFTER, anchor="ra")
 
@@ -95,10 +95,10 @@ def build():
 
     # Section labels
     f_label = font(F_BOLD, 18)
-    draw_text(d, (72, 198), "BEFORE  (AI · 영-한 번역체)", f_label, BEFORE)
+    draw_text(d, (72, 198), "BEFORE  (딱딱한 문장)", f_label, BEFORE)
     draw_text(d, (680, 198), "AFTER  (자연 한국어)", f_label, AFTER)
 
-    # Three pattern rows: A-16 대명사 / A-19 이중조사 / A-18 관계절
+    # Three Sunny 7 rows: -적 / 의 / 있는
     f_ex = font(F_SEMI, 26)
     f_pat = font(F_REG, 14)
 
@@ -106,25 +106,25 @@ def build():
         # (before_text, before_strikes_index_pairs, after_text, label_left, label_right)
         # strikes: list of (start_idx, end_idx) char ranges to strike
         (
-            "그는 그의 시계를 보았다.",
-            [(3, 5)],  # "그의"
-            "시계를 보았다.",
-            "A-16 영어 대명사 직역",
-            "→ 영형(생략)",
+            "전략적 중요성을 가지고 있다.",
+            [(0, 3), (9, 15)],
+            "전략상 중요하다.",
+            "SUNNY-1 · -적이 붙은 말",
+            "→ 술어를 세운다",
         ),
         (
-            "긴장으로부터의 해방",
-            [(2, 8)],  # "으로부터의"
-            "긴장에서 벗어남",
-            "A-19 이중 조사 결합",
-            "→ 절·구로 풀어쓰기",
+            "서비스의 사용의 편의성",
+            [(3, 4), (7, 8)],
+            "서비스 사용 편의성",
+            "SUNNY-2 · 조사 의",
+            "→ 명사 더미를 줄인다",
         ),
         (
-            "AI가 학습한 데이터가 보여주는 언어 패턴",
-            [],  # 좌향 2중 — 핵 어휘 "패턴"까지 관형구 누적
-            "AI 학습 데이터의 언어 패턴",
-            "A-18 관계절 좌향 수식",
-            "→ 관형구 압축",
+            "문제를 해결할 수 있는 방법",
+            [(10, 12)],
+            "문제를 해결할 방법",
+            "SUNNY-5 · 있는/있다는",
+            "→ 완충재를 덜어낸다",
         ),
     ]
 
@@ -164,11 +164,11 @@ def build():
     f_link = font(F_MED, 16)
 
     # 좌측: 메타
-    draw_text(d, (72, 562), "10 categories · 60+ patterns · v2.0", f_meta, TITLE)
-    draw_text(d, (72, 590), "이근희 · 김정우 · 김도훈 · 김혜영 · Toral 2019", f_meta_sub, META)
+    draw_text(d, (72, 562), "Sunny 7 rules · 10 categories · v2.0", f_meta, TITLE)
+    draw_text(d, (72, 590), "의심 → 역할 확인 → 필요할 때만 수정", f_meta_sub, META)
 
     # 우측: github URL
-    draw_text(d, (W - 72, 590), "github.com/epoko77-ai/im-not-ai", f_link, LINK, anchor="ra")
+    draw_text(d, (W - 72, 590), "github.com/itssosunny/im-not-strange-ai", f_link, LINK, anchor="ra")
 
     # Save
     OUT.parent.mkdir(parents=True, exist_ok=True)
