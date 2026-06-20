@@ -1,12 +1,13 @@
 # im-not-strange-ai 설치 가이드 (Install)
 
-`im-not-strange-ai`는 `im-not-ai`를 기반으로 한 새 플러그인입니다. 현재는 로컬 개발 단계이며, marketplace와 원격 저장소 배포는 아직 확정되지 않았습니다.
+`im-not-strange-ai`는 `im-not-ai`를 기반으로 한 새 플러그인입니다. Claude Code와 Codex CLI에서 marketplace source로 추가해 설치할 수 있습니다.
+이 설치 방식은 self-hosted marketplace 배포이며, Claude community/official marketplace나 Codex official Plugin Directory 등재와는 별도입니다.
 
 | 도구 | 모드 | 설치 방법 |
 |---|---|---|
 | Claude Code | Fast + strict(5인 파이프라인) | ① 플러그인 마켓플레이스(권장) / ② 클론 + `install.sh` |
-| Codex CLI | Fast(단일 호출)만 | 클론 + `install.sh` |
-| Gemini CLI | Fast(단일 호출)만 | ① `gemini extensions install`(권장) / ② 클론 + `install.sh` |
+| Codex CLI | Fast(단일 호출)만 | Codex marketplace / 클론 + `install.sh` |
+| Gemini CLI | Fast(단일 호출)만 | 클론 + `install.sh` |
 
 > Codex와 Gemini는 Claude식 다중 서브에이전트 파이프라인을 결정적으로 실행하지 못해, 단일 호출 Fast Path만 제공합니다. 정밀 검증이 필요하면 Claude Code의 `--strict`를 사용하세요.
 
@@ -14,14 +15,17 @@
 
 ## Claude Code
 
-### 방법 ① 플러그인 마켓플레이스 — 배포 전
+### 방법 ① 플러그인 마켓플레이스
 
-아직 등록하지 않았습니다. 원격 저장소와 marketplace 배포명을 결정한 뒤 명령을 확정합니다.
+```bash
+claude plugin marketplace add itssosunny/im-not-strange-ai
+claude plugin install im-not-strange-ai@im-not-strange-ai
+```
 
 ### 방법 ② 클론 + 스크립트
 
 ```bash
-cd /Users/matt/11_code/1_sw/im-not-strange-ai
+cd im-not-strange-ai
 ./install.sh --claude-only
 ```
 
@@ -33,8 +37,17 @@ cd /Users/matt/11_code/1_sw/im-not-strange-ai
 
 Codex 0.121.0 이상(1급 Skills 지원)이 필요합니다.
 
+### 방법 ① Codex marketplace
+
 ```bash
-cd /Users/matt/11_code/1_sw/im-not-strange-ai
+codex plugin marketplace add itssosunny/im-not-strange-ai --ref main
+codex plugin add im-not-strange-ai@im-not-strange-ai
+```
+
+### 방법 ② 클론 + 스크립트
+
+```bash
+cd im-not-strange-ai
 ./install.sh --codex-only
 ```
 
@@ -45,7 +58,7 @@ cd /Users/matt/11_code/1_sw/im-not-strange-ai
 ## 한 번에 양쪽 모두 (Claude + Codex + Gemini)
 
 ```bash
-cd /Users/matt/11_code/1_sw/im-not-strange-ai
+cd im-not-strange-ai
 ./install.sh            # 설치된 claude/codex/gemini를 자동 감지해 각각 연결
 ```
 
@@ -72,7 +85,7 @@ cd /Users/matt/11_code/1_sw/im-not-strange-ai
   - `./update.sh --check` — 감지만(적용 안 함). 최신이면 종료코드 `0`, 업데이트 있으면 `10`.
   - `--copy`로 설치했다면 `./update.sh --copy --force`.
 - **수동** — `git pull`만 해도 심링크라 내용은 반영됩니다(신규 파일 연결은 `./install.sh` 한 번 더).
-- **마켓플레이스 설치** — 아직 배포 전입니다. 원격 저장소와 배포명을 결정한 뒤 갱신 명령을 확정합니다.
+- **마켓플레이스 설치** — Claude는 `claude plugin update im-not-strange-ai`, Codex는 `codex plugin marketplace upgrade im-not-strange-ai` 후 필요 시 다시 `codex plugin add im-not-strange-ai@im-not-strange-ai`.
 - **주기적 무인 업데이트 (opt-in)** — 완전 자동 갱신을 원하면 cron/launchd로 `update.sh`를 거세요. 예(매주 월 09:00, 감지 시 적용):
   ```cron
   0 9 * * 1  cd /path/to/im-not-strange-ai && ./update.sh >> ~/.im-not-strange-ai-update.log 2>&1
@@ -82,7 +95,7 @@ cd /Users/matt/11_code/1_sw/im-not-strange-ai
 ## 제거
 
 - **스크립트 설치** — `./uninstall.sh`: 이 저장소를 가리키는 심링크만 제거(직접 둔 파일·`.bak.*`·`--copy` 설치본은 보존).
-- **마켓플레이스** — 아직 배포 전입니다.
+- **마켓플레이스** — Claude는 `claude plugin uninstall im-not-strange-ai`, Codex는 `codex plugin remove im-not-strange-ai@im-not-strange-ai`.
 
 ---
 
@@ -96,7 +109,7 @@ cd /Users/matt/11_code/1_sw/im-not-strange-ai
 ## 요구 사항
 
 - Claude Code: 마켓플레이스/플러그인 지원 버전(`claude plugin` 명령 사용 가능).
-- Codex CLI: 0.121.0 이상(`~/.codex/skills` Skills 지원).
+- Codex CLI: 0.121.0 이상(plugin marketplace와 Skills 지원).
 - Gemini CLI: 0.14.0 이상(`gemini extensions` 명령 사용 가능).
 - macOS·Linux의 `bash`. (Windows는 WSL 권장 — 심링크 때문에.)
 
@@ -106,14 +119,14 @@ cd /Users/matt/11_code/1_sw/im-not-strange-ai
 
 Gemini CLI 0.14.0 이상이 필요합니다.
 
-### 방법 ① 원격 설치 — 배포 전
+### 방법 ① 원격 설치
 
 아직 원격 설치를 제공하지 않습니다.
 
 ### 방법 ② 클론 + 스크립트
 
 ```bash
-cd /Users/matt/11_code/1_sw/im-not-strange-ai
+cd im-not-strange-ai
 ./install.sh --gemini-only
 ```
 

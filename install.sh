@@ -106,7 +106,7 @@ fi
 if [ "$DO_CODEX" != no ] && { [ "$DO_CODEX" = yes ] || command -v codex >/dev/null 2>&1; }; then
   echo "== Codex CLI =="
   run mkdir -p "$CODEX_HOME/skills"
-  install_one "$REPO/codex/skills/im-not-strange-ai" "$CODEX_HOME/skills/im-not-strange-ai"
+  install_one "$REPO/codex-plugin/skills/im-not-strange-ai" "$CODEX_HOME/skills/im-not-strange-ai"
 else
   echo "== Codex CLI: 건너뜀 (codex 미감지 — 강제하려면 --codex-only) =="
 fi
