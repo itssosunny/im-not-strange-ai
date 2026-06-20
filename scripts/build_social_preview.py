@@ -1,4 +1,4 @@
-"""Build assets/social-preview.png for im-not-strange-ai v2.0.
+"""Build assets/social-preview.png for im-not-strange-ai v0.0.
 
 기존 preview 디자인 톤(베이지 #F4EFE5 · 짙은 녹색 #2D5C3F · 빨강 #C0573F · BEFORE/AFTER
 2단 분할)을 유지하되, 메시지를 Sunny 7규칙 중심으로 교체.
@@ -86,7 +86,7 @@ def build():
     draw_text(d, (72, 70), "im-not-strange-ai", f_title, TITLE)
     # 우상단 — 현재 플러그인 메시지
     sub_line1 = "한국어 문장 다듬기"
-    sub_line2 = "v2.0 · Sunny 7규칙"
+    sub_line2 = "v0.0 · Sunny 7규칙"
     draw_text(d, (W - 72, 80), sub_line1, f_sub, SUB, anchor="ra")
     draw_text(d, (W - 72, 112), sub_line2, f_sub_em, AFTER, anchor="ra")
 
@@ -164,7 +164,7 @@ def build():
     f_link = font(F_MED, 16)
 
     # 좌측: 메타
-    draw_text(d, (72, 562), "Sunny 7 rules · 10 categories · v2.0", f_meta, TITLE)
+    draw_text(d, (72, 562), "Sunny 7 rules · 10 categories · v0.0", f_meta, TITLE)
     draw_text(d, (72, 590), "의심 → 역할 확인 → 필요할 때만 수정", f_meta_sub, META)
 
     # 우측: github URL

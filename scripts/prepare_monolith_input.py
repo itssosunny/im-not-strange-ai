@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""im-not-strange-ai v1.6 — monolith input shim.
+"""im-not-strange-ai monolith input shim.
 
-Pre-processes user input by computing v1.6 quantitative metrics and
+Pre-processes user input by computing quantitative metrics and
 prepending the result to the text the monolith agent reads. The monolith
 keeps its 4-tool-call cap (Read input + Read rules + Write final + Write
 summary) because the metrics block is folded into the same input file.
@@ -23,7 +23,7 @@ Hard rules:
   - stdlib only (argparse/json/os/sys/datetime/pathlib/traceback)
   - never modify the original text body inside the combined file
   - on metrics failure, write the combined file *without* the score block
-    so the monolith degrades to v1.5 behaviour automatically.
+    so the monolith still runs without the score layer.
 """
 
 from __future__ import annotations
@@ -46,13 +46,13 @@ METRICS_DIR = PROJECT_ROOT / ".claude" / "skills" / "im-not-strange-ai" / "refer
 
 # Make metrics.py importable without polluting global state.
 sys.path.insert(0, str(METRICS_DIR))
-# v2.0 우선 import — compute_all 별칭으로 v1.6 호환. metrics_v2 부재·로드 실패 시
-# v1.6 metrics fallback. graceful degrade로 monolith 동작은 항상 보장.
+# 확장 metrics를 우선 import한다. metrics_v2 부재·로드 실패 시 기본 metrics로
+# fallback한다. graceful degrade로 monolith 동작은 항상 보장.
 try:
-    import metrics_v2 as _metrics_mod  # type: ignore  # v2.0 (post-editese 14 metric)
+    import metrics_v2 as _metrics_mod  # type: ignore  # extended metrics
 except Exception:  # pragma: no cover
     try:
-        import metrics as _metrics_mod  # type: ignore  # v1.6 fallback
+        import metrics as _metrics_mod  # type: ignore  # basic fallback
     except Exception:
         _metrics_mod = None
 
@@ -120,7 +120,7 @@ def _render_block(metrics_obj: dict) -> str:
     safe = ev.get("safe_balances") or []
 
     lines: list[str] = []
-    lines.append("[정량 사전 점수 v1.6 / KatFish baseline]")
+    lines.append("[정량 사전 점수 / KatFish baseline]")
     lines.append(
         f"risk_band: {metrics_obj.get('risk_band', 'unknown')}  "
         f"(score {metrics_obj.get('risk_score', 0)})"
@@ -183,7 +183,7 @@ def _render_combined(text: str, metrics_obj: dict | None) -> str:
 
 
 def main(argv: list[str] | None = None) -> int:
-    p = argparse.ArgumentParser(description="im-not-strange-ai v1.6 monolith input shim")
+    p = argparse.ArgumentParser(description="im-not-strange-ai monolith input shim")
     p.add_argument("--run-dir", help="Existing run directory (relative ok)")
     p.add_argument("--text", help="Inline text input (creates new run dir)")
     p.add_argument("--genre", default="essay", help="Genre hint (default: essay)")

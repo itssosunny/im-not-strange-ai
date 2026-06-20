@@ -1,6 +1,6 @@
 {
   "name": "im-not-strange-ai",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "AI가 쓴 한글 텍스트를 자연스럽게 다듬는 im-not-ai 기반 플러그인. Sunny식 문장 다듬기 규칙을 일부 더한다.",
   "author": {
     "name": "itssosunny"
