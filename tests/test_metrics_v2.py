@@ -356,6 +356,18 @@ class V20IntegrationTests(unittest.TestCase):
         # All v2 baseline cells are placeholders by design.
         self.assertGreater(len(result["v2_baseline_warnings"]), 0)
 
+    def test_compute_all_v2_default_baseline_v2_path_loads_placeholder(self) -> None:
+        text = "오늘은 비가 온다. 길이 미끄럽다."
+        result = metrics_v2.compute_all_v2(
+            text, genre="essay",
+            baseline_path=BASELINE_PATH,
+        )
+        self.assertEqual(
+            len(result["v2_baseline_warnings"]),
+            len(result["v2_metrics"]),
+        )
+        self.assertTrue(any(v is not None for v in result["v2_z_scores"].values()))
+
 
 if __name__ == "__main__":
     unittest.main()

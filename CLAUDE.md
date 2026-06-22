@@ -2,7 +2,7 @@
 
 ## 프로젝트 개요
 
-`im-not-ai`를 베이스로 삼아 Sunny식 문장 다듬기 규칙을 일부 더한 새 플러그인 하네스. 번역투·영어 인용 과다·기계적 병렬·관용구·피동태 남용·접속사 남발·리듬 균일성·이모지/불릿 과다 등 기존 AI 티 패턴을 유지하되, 문장 단위 보조 규칙을 추가한다.
+Sunny식 문장 다듬기 규칙을 더한 한국어 윤문 플러그인 하네스. 번역투·영어 인용 과다·기계적 병렬·관용구·피동태 남용·접속사 남발·리듬 균일성·이모지/불릿 과다 등 AI 티 패턴을 점검하고, 문장 단위 보조 규칙을 적용한다.
 
 ## 철칙
 
@@ -35,9 +35,9 @@ im-not-strange-ai/
 │   │   └── references/            # SSOT — ai-tell-taxonomy·rewriting-playbook·quick-rules 등
 │   ├── im-not-strange-ai-fast/
 │   └── im-not-strange-ai-redo/
-├── codex/skills/im-not-strange-ai/  # Codex Fast Path 스킬
+├── codex-plugin/skills/im-not-strange-ai/  # Codex Fast Path 스킬
 │   ├── SKILL.md                   # monolith 기반 자가완결
-│   └── references → ../../../.claude/skills/im-not-strange-ai/references   # SSOT 공유 심링크
+│   └── references/                # .claude reference tree와 동일하게 유지
 └── _workspace/                    # 런타임 산출물 (run_id별, gitignored)
     └── {YYYY-MM-DD-NNN}/          # 01_input.txt … final.md · summary.md
 ```

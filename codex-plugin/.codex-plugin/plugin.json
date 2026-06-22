@@ -1,7 +1,7 @@
 {
   "name": "im-not-strange-ai",
   "version": "0.0.0",
-  "description": "AI가 쓴 한글 텍스트를 자연스럽게 다듬는 im-not-ai 기반 한국어 문장 다듬기 플러그인.",
+  "description": "AI가 쓴 한글 텍스트를 자연스럽게 다듬는 한국어 문장 다듬기 플러그인.",
   "author": {
     "name": "itssosunny",
     "url": "https://github.com/itssosunny"
@@ -21,7 +21,7 @@
   "interface": {
     "displayName": "im-not-strange-ai",
     "shortDescription": "한국어 AI 문체를 의미 보존 원칙으로 자연스럽게 다듬습니다.",
-    "longDescription": "im-not-ai에서 영감을 받은 한국어 문장 다듬기 플러그인입니다. 10대 AI 티 분류 체계와 Sunny 7규칙을 사용해 번역투, 기계적 문장, 군더더기 표현을 의심하고 역할을 확인한 뒤 필요한 경우에만 고칩니다.",
+    "longDescription": "한국어 문장 다듬기 플러그인입니다. 10대 AI 티 분류 체계와 Sunny 7규칙을 사용해 번역투, 기계적 문장, 군더더기 표현을 의심하고 역할을 확인한 뒤 필요한 경우에만 고칩니다.",
     "developerName": "itssosunny",
     "category": "Productivity",
     "capabilities": [

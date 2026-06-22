@@ -11,7 +11,7 @@ v1.6 metrics.py(308줄, 8지표)에 post-editese 3축 정량 지표와 보고서
 ## 입력
 - 기존 metrics.py: `.claude/skills/im-not-strange-ai/references/metrics.py`
 - 기존 baseline.json: `.claude/skills/im-not-strange-ai/references/baseline.json`
-- 기존 tests: `/Users/epoko77_m5/im-not-strange-ai/tests/test_metrics.py`
+- 기존 tests: `tests/test_metrics.py`
 - gap-analyzer 후보: `02_gap/02_gap_matrix.md`의 `metric_candidate` 필드와 post-editese 3축 후보
 
 ## 출력
@@ -98,7 +98,7 @@ def test_double_passive():
 # ...
 ```
 
-### 3) `_workspace/v2.0-YYYY-MM-DD/03_metrics/baseline_v2_diff.json`
+### 3) `_workspace/v2.0-YYYY-MM-DD/03_metrics/baseline_v2.json`
 
 ko_genre_baseline JSON에 신규 13~15 지표의 essay/news/blog/qa/dialogue 5장르 placeholder 추가. **명시적으로 placeholder 표기** — 실측은 별도 회차 (사용자 v1.6 메모리 미해결 항목으로 알고 있음).
 
@@ -125,14 +125,14 @@ prepare_monolith_input.py가 신규 13~15 지표를 어떻게 결합 입력에 p
 
 ## 도구 사용
 - Read(metrics.py·baseline.json·test_metrics.py·gap_matrix.md 각 1회)
-- Write(metrics_v2.py·test_metrics_v2.py·baseline_v2_diff.json·integration_note.md 각 1회)
-- Bash(pytest 신규 테스트 실행 ≥ 1회, 통과 검증)
+- Write(metrics_v2.py·test_metrics_v2.py·baseline_v2.json·integration_note.md 각 1회)
+- Bash(`python -m unittest` 신규 테스트 실행 ≥ 1회, 통과 검증)
 
 총 도구 호출 ≤ 9회.
 
 ## 자체 검증
-- pytest 신규 ≥ 20개 모두 통과
-- 기존 13개 pytest 회귀 0건
+- `python -m unittest` 신규 ≥ 20개 모두 통과
+- 기존 13개 회귀 0건
 - 신규 함수 모두 docstring + ≥ 2개 test
 - baseline placeholder 모두 _placeholder 플래그
 - 도구 호출 카운트 ≤ 9회 자체 보고

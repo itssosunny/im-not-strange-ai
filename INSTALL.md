@@ -1,6 +1,6 @@
 # im-not-strange-ai 설치 가이드 (Install)
 
-`im-not-strange-ai`는 `im-not-ai`를 기반으로 한 새 플러그인입니다. Claude Code와 Codex CLI에서 marketplace source로 추가해 설치할 수 있습니다.
+`im-not-strange-ai`는 한국어 문장 다듬기 플러그인입니다. Claude Code와 Codex CLI에서 marketplace source로 추가해 설치할 수 있습니다.
 이 설치 방식은 self-hosted marketplace 배포이며, Claude community/official marketplace나 Codex official Plugin Directory 등재와는 별도입니다.
 
 | 도구 | 모드 | 설치 방법 |

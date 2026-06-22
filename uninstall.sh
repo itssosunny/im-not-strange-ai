@@ -28,15 +28,7 @@ remove_if_ours() {
 for s in im-not-strange-ai im-not-strange-ai-fast im-not-strange-ai-redo; do
   remove_if_ours "$CLAUDE_HOME/skills/$s" "$REPO/.claude/skills/$s"
 done
-for s in humanize-korean humanize humanize-redo; do
-  remove_if_ours "$CLAUDE_HOME/skills/$s" "$REPO/.claude/skills/$s"
-done
-remove_if_ours "$CODEX_HOME/skills/humanize-korean" "$REPO/skills/humanize-korean"
-remove_if_ours "$CODEX_HOME/skills/im-not-strange-ai" "$REPO/skills/im-not-strange-ai"
-remove_if_ours "$CODEX_HOME/skills/humanize-korean" "$REPO/codex-plugin/skills/humanize-korean"
 remove_if_ours "$CODEX_HOME/skills/im-not-strange-ai" "$REPO/codex-plugin/skills/im-not-strange-ai"
-remove_if_ours "$CODEX_HOME/skills/humanize-korean" "$REPO/codex/skills/humanize-korean"
-remove_if_ours "$CODEX_HOME/skills/im-not-strange-ai" "$REPO/codex/skills/im-not-strange-ai"
 for a in "$REPO/agents"/*.md; do
   remove_if_ours "$CLAUDE_HOME/agents/$(basename "$a")" "$a"
 done
